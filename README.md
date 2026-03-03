@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Shaurya Bhatnagar - Developer Portfolio
 
-## Getting Started
+**Live Site:** [https://shauryabhat2003.vercel.app/](https://shauryabhat2003.vercel.app/)
 
-First, run the development server:
+Welcome to the repository for my personal developer portfolio! 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Designed for performance and aesthetics, this site highlights my experience across complex backend systems, enterprise cloud environments, AI integration, and cutting-edge interactive frontend development. The UI leans into a modern, dark "glassmorphism" aesthetic with physics-based animations to create a memorable web experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Immersive Hero Section**: Interactive canvas elements with responsive typography and dynamic custom WebGL color-bending background effects.
+- **Physics-Based Cards**: "Spread Cards" component for projects utilizing React spring-physics to naturally scatter and fan out project tiles.
+- **Intelligent Modals**: Projects expand seamlessly into deep-dive descriptions, elegantly blurring out non-focused background elements without breaking the site structure.
+- **Dynamic Identity**: Rotating "About Me" visuals that randomly select imagery on page load to keep the identity fresh.
+- **Scrolling Tech Arsenal**: Infinite CSS animations displaying the primary software engineering tech stack.
+- **Fully Responsive**: Flawless design and execution across all viewport boundaries from mobile to 4K displays.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Built With
 
-## Learn More
+- **Framework**: [Next.js (App Router)](https://nextjs.org/)
+- **Library**: [React 18](https://react.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) & [Lucide](https://lucide.dev/)
+- **Deployment**: [Vercel](https://vercel.com)
 
-To learn more about Next.js, take a look at the following resources:
+## 💻 Local Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run this project locally, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shauryabhat2003/Me.git
+   cd Me
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+   *or `yarn install` / `pnpm install`*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
+
+## 🤝 Contact
+
+Always exploring new frontiers in AI integration and distributed systems. Whether you have an ambitious vision, a complex backend challenge, or just want to talk tech—my inbox is open.
+
+- **Email**: [shauryabhatnagar1511@gmail.com](mailto:shauryabhatnagar1511@gmail.com)
+- **LinkedIn**: [Shaurya Bhatnagar](https://www.linkedin.com/in/shaurya-bhatnagar-418752263/)
+- **GitHub**: [@shauryabhat2003](https://github.com/shauryabhat2003)
+
+---
+
+&copy; 2026 Shaurya Bhatnagar. Built with precision.
