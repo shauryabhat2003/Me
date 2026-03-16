@@ -41,22 +41,21 @@ export default function SpreadCards({ projects, className = '' }: SpreadCardsPro
         return () => window.removeEventListener('resize', handleResize);
     }, [projects]);
 
+    // Lift grid calculation setup out of getGridPosition so height can adapt
+    const cols = windowWidth < 768 ? 1 : (windowWidth < 1024 ? 2 : 3);
+    const isMobile = windowWidth < 640;
+    const cardWidth = isMobile ? 280 : 320;
+    const cardHeight = isMobile ? 380 : 420;
+    const gap = isMobile ? 16 : 32;
+
+    const totalRows = Math.ceil(projects.length / cols);
+    const totalWidth = cols * cardWidth + (cols - 1) * gap;
+    const totalHeight = totalRows * cardHeight + (totalRows - 1) * gap;
+
     // Grid calculation helpers
     const getGridPosition = (index: number) => {
-        const cols = windowWidth < 768 ? 1 : (windowWidth < 1024 ? 2 : 3);
-
         const row = Math.floor(index / cols);
         const col = index % cols;
-
-        // Approximate gap and card sizes for offsets
-        const cardWidth = 320;
-        const cardHeight = 420;
-        const gap = 32; // 2rem (gap-8)
-
-        // Calculate total grid width/height to center the spread
-        const totalRows = Math.ceil(projects.length / cols);
-        const totalWidth = cols * cardWidth + (cols - 1) * gap;
-        const totalHeight = totalRows * cardHeight + (totalRows - 1) * gap;
 
         // Offset from absolute center of container
         let startX = -(totalWidth / 2) + (cardWidth / 2);
@@ -80,9 +79,12 @@ export default function SpreadCards({ projects, className = '' }: SpreadCardsPro
     return (
         <div
             ref={containerRef}
-            className={`relative w-full min-h-[100vh] flex items-center justify-center py-24 ${className}`}
+            className={`relative w-full flex items-center justify-center py-24 ${className}`}
         >
-            <div className={`relative w-full max-w-6xl mx-auto flex justify-center items-center h-full min-h-[600px] transition-all duration-500 ${selectedProject ? 'blur-md opacity-40 pointer-events-none' : ''}`}>
+            <div 
+                className={`relative w-full max-w-6xl mx-auto flex justify-center items-center h-full transition-all duration-500 ${selectedProject ? 'blur-md opacity-40 pointer-events-none' : ''}`}
+                style={{ height: Math.max(600, totalHeight) }}
+            >
                 {projects.map((project, index) => {
                     const isStacked = !isInView;
                     const rotation = isStacked ? (rotations[index] || 0) : 0;
@@ -109,7 +111,13 @@ export default function SpreadCards({ projects, className = '' }: SpreadCardsPro
                                 mass: 0.2,      // Very light mass to move immediately
                                 delay: isStacked ? 0 : index * 0.01 // Almost instant stagger
                             }}
-                            className={`group absolute flex flex-col justify-end overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 hover:border-white/30 cursor-pointer w-[280px] h-[380px] sm:w-[320px] sm:h-[420px] shadow-2xl origin-center`}
+                            style={{ 
+                                top: '50%', 
+                                left: '50%', 
+                                marginTop: -cardHeight / 2, 
+                                marginLeft: -cardWidth / 2 
+                            }}
+                            className={`group absolute flex flex-col justify-end overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 hover:border-white/30 cursor-pointer w-[280px] h-[380px] sm:w-[320px] sm:h-[420px] shadow-2xl origin-center mx-auto`}
                             whileHover={!isStacked ? { y: targetPos.y - 8, scale: 1.02, transition: { duration: 0.2 } } : { scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                         >

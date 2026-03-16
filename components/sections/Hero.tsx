@@ -37,7 +37,7 @@ export default function Hero() {
                     <span className="font-bold text-lg md:text-4xl">Hello, I'm</span>
                 </motion.p>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter w-full max-w-[90vw] mx-auto flex justify-center text-center flex-wrap">
                     <DecryptedText
                         text="SHAURYA BHATNAGAR"
                         speed={60}

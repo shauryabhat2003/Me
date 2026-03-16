@@ -9,7 +9,7 @@ import Particles from '@/components/ui/Particles';
 
 export default function Home() {
     return (
-        <main className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black scroll-smooth">
+        <main className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black scroll-smooth w-full overflow-x-hidden">
             {/* Global Background Particles for the rest of the application */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <Particles
