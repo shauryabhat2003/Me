@@ -22,7 +22,8 @@ export default function TiltedCard({
     showMobileWarning = true,
     showTooltip = true,
     overlayContent = null,
-    displayOverlayContent = false
+    displayOverlayContent = false,
+    containerClassName = ''
 }: any) {
     const ref = useRef<HTMLElement>(null);
 
@@ -77,11 +78,7 @@ export default function TiltedCard({
     return (
         <figure
             ref={ref}
-            className="tilted-card-figure"
-            style={{
-                height: containerHeight,
-                width: containerWidth
-            }}
+            className={`tilted-card-figure ${containerClassName}`}
             onMouseMove={handleMouse}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -91,10 +88,8 @@ export default function TiltedCard({
             )}
 
             <motion.div
-                className="tilted-card-inner"
+                className="tilted-card-inner relative w-full h-full"
                 style={{
-                    width: imageWidth,
-                    height: imageHeight,
                     rotateX,
                     rotateY,
                     scale
@@ -103,11 +98,7 @@ export default function TiltedCard({
                 <motion.img
                     src={imageSrc}
                     alt={altText}
-                    className="tilted-card-img"
-                    style={{
-                        width: imageWidth,
-                        height: imageHeight
-                    }}
+                    className="tilted-card-img absolute inset-0 w-full h-full object-cover rounded-[15px]"
                 />
 
                 {displayOverlayContent && overlayContent && (

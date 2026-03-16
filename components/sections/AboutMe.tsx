@@ -11,11 +11,13 @@ const aboutImages = [
 
 export default function AboutMe() {
     const [currentImage, setCurrentImage] = useState<string>("");
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         // Randomly select an image on the client side to prevent hydration mismatch
         const randomIndex = Math.floor(Math.random() * aboutImages.length);
         setCurrentImage(aboutImages[randomIndex]);
+        setIsMounted(true);
     }, []);
 
     return (
@@ -24,26 +26,25 @@ export default function AboutMe() {
 
                 {/* Left Side: Titled Card */}
                 <motion.div
-                    className="w-full md:w-1/2 flex justify-center"
+                    className="w-full md:w-1/2 flex justify-center h-[350px] sm:h-[400px] md:h-[500px]"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
                 >
-                    <TiltedCard
-                        imageSrc={currentImage || aboutImages[0]} // Fallback while mounting
-                        altText="Shaurya Bhatnagar"
-                        captionText="Shaurya Bhatnagar"
-                        containerHeight="500px"
-                        containerWidth="400px"
-                        imageHeight="100%"
-                        imageWidth="100%"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.05}
-                        showMobileWarning={false}
-                        showTooltip={true}
-                        displayOverlayContent={true}
-                    />
+                    {isMounted && (
+                        <TiltedCard
+                            imageSrc={currentImage || aboutImages[0]}
+                            altText="Shaurya Bhatnagar"
+                            captionText="Shaurya Bhatnagar"
+                            containerClassName="w-full h-full max-w-[400px]"
+                            rotateAmplitude={12}
+                            scaleOnHover={1.05}
+                            showMobileWarning={false}
+                            showTooltip={true}
+                            displayOverlayContent={true}
+                        />
+                    )}
                 </motion.div>
 
                 {/* Right Side: Text Entry */}
